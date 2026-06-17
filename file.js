@@ -1,5 +1,5 @@
-let firstCard = 10
-let secondCard = 13
+let firstCard = getRandomNumber()
+let secondCard = getRandomNumber()
 let cards = [firstCard, secondCard]
 let sum = firstCard + secondCard
 let isAlive = true
@@ -15,9 +15,16 @@ function startGame() {
     renderGame()
 }
 
+function getRandomNumber() {
+    return 5;
+}
 function renderGame() {
     sumEl.textContent = "Sum: " + sum
-    cardsEL.textContent = "Cards: " + cards[0] + " " + cards[1]
+    cardsEL.textContent = "Cards: "
+    for (let i = 0; i < cards.length; i++) {
+        cardsEL.textContent += cards[i] + " "
+    }
+
     if (sum <= 20) {
         message = "Do you want to draw a new card"
     } else if (sum === 21) {
@@ -36,7 +43,7 @@ function renderGame() {
 function newCard() {
     console.log("Drawing a new card from the deck!")
 
-    let newCard = 5
+    let newCard = getRandomNumber()
     sum += newCard
     cards.push(newCard)
     console.log(cards)
